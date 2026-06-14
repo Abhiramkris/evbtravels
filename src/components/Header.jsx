@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, Navigation } from 'lucide-react';
 import './Header.css';
 
@@ -11,24 +12,23 @@ export default function Header() {
     <header className="header glass-panel">
       <div className="container header-container">
         {/* Logo */}
-        <a href="/" className="logo-link" id="nav-logo">
+        <Link to="/" className="logo-link" id="nav-logo">
           <Navigation size={24} className="logo-dot" fill="currentColor" />
           <span>EVB Travels</span>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <ul className="nav-links">
-          <li><a href="#ride" className="nav-link">Ride</a></li>
-          <li><a href="#drive" className="nav-link">Drive</a></li>
-          <li><a href="#outstation" className="nav-link">Outstation</a></li>
-          <li><a href="#about" className="nav-link">About</a></li>
-          <li><a href="#help" className="nav-link">Help</a></li>
+          <li><Link to="/" className="nav-link">Home</Link></li>
+          <li><Link to="/services" className="nav-link">Services</Link></li>
+          <li><Link to="/about" className="nav-link">About</Link></li>
+          <li><Link to="/contact" className="nav-link">Contact</Link></li>
         </ul>
 
         {/* Desktop Actions */}
         <div className="nav-actions">
-          <button className="btn-login" id="header-login-btn">Log in</button>
-          <button className="btn-signup" id="header-signup-btn">Sign up</button>
+          <Link to="/lost-in-clouds" className="btn-login" id="header-login-btn">Log in</Link>
+          <Link to="/lost-in-clouds" className="btn-signup" id="header-signup-btn">Sign up</Link>
         </div>
 
         {/* Mobile Toggle Button */}
@@ -44,14 +44,13 @@ export default function Header() {
 
         {/* Mobile Dropdown Menu */}
         <ul className={`mobile-menu ${isOpen ? 'open' : ''}`} id="mobile-dropdown-menu">
-          <li><a href="#ride" className="mobile-nav-link" onClick={toggleMenu}>Ride</a></li>
-          <li><a href="#drive" className="mobile-nav-link" onClick={toggleMenu}>Drive</a></li>
-          <li><a href="#outstation" className="mobile-nav-link" onClick={toggleMenu}>Outstation</a></li>
-          <li><a href="#about" className="mobile-nav-link" onClick={toggleMenu}>About</a></li>
-          <li><a href="#help" className="mobile-nav-link" onClick={toggleMenu}>Help</a></li>
+          <li><Link to="/" className="mobile-nav-link" onClick={toggleMenu}>Home</Link></li>
+          <li><Link to="/services" className="mobile-nav-link" onClick={toggleMenu}>Services</Link></li>
+          <li><Link to="/about" className="mobile-nav-link" onClick={toggleMenu}>About</Link></li>
+          <li><Link to="/contact" className="mobile-nav-link" onClick={toggleMenu}>Contact</Link></li>
           <div className="mobile-actions">
-            <button className="btn-login" onClick={toggleMenu}>Log in</button>
-            <button className="btn-signup" onClick={toggleMenu}>Sign up</button>
+            <Link to="/lost-in-clouds" className="btn-login" onClick={toggleMenu}>Log in</Link>
+            <Link to="/lost-in-clouds" className="btn-signup" onClick={toggleMenu}>Sign up</Link>
           </div>
         </ul>
       </div>

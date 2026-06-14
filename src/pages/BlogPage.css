@@ -1,0 +1,25 @@
+.blog-page-section {
+  padding: 120px 0 100px;
+  background-color: var(--bg-primary);
+  min-height: 80vh;
+  text-align: left;
+}
+
+.btn-back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-back-home:hover {
+  color: var(--text-primary);
+  transform: translateX(-4px);
+}
+
+#certifyied-blog-post {
+  margin-top: 20px;
+}

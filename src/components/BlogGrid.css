@@ -1,0 +1,36 @@
+.blog-grid-section {
+  padding: 80px 0 100px;
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+  text-align: left;
+}
+
+.blog-grid-header {
+  margin-bottom: 48px;
+  max-width: 600px;
+}
+
+.blog-grid-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.blog-grid-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Adjust embedded container margins */
+#certifyied-blog-container {
+  margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+  .blog-grid-title {
+    font-size: 2rem;
+  }
+}

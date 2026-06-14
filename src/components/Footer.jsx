@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Navigation, Mail } from 'lucide-react';
+import { submitContactForm } from '../utils/api';
 import './Footer.css';
 
 export default function Footer() {
-  const handleSubscribe = (e) => {
+  const [email, setEmail] = useState('');
+
+  const handleSubscribe = async (e) => {
     e.preventDefault();
-    alert('Thank you for subscribing to EVB Travels newsletter!');
+    if (!email) return;
+
+    const success = await submitContactForm({
+      name: 'Newsletter Subscriber',
+      email: email,
+      subject: 'Newsletter Subscription',
+      message: `User subscribed to EVB Travels newsletter: ${email}`
+    });
+
+    if (success) {
+      alert('Thank you for subscribing to EVB Travels newsletter!');
+      setEmail('');
+    } else {
+      alert('Subscription failed. Please try again.');
+    }
   };
 
   return (
@@ -14,10 +32,10 @@ export default function Footer() {
         <div className="footer-grid">
           {/* Brand Info */}
           <div className="footer-brand">
-            <div className="footer-logo">
+            <Link to="/" className="footer-logo">
               <Navigation size={24} className="footer-logo-dot" fill="currentColor" />
               <span>EVB Travels</span>
-            </div>
+            </Link>
             <p className="footer-desc">
               Providing premium airport transfers, outstation journeys, and comfortable rides in and around Kannur with professional drivers.
             </p>
@@ -46,10 +64,10 @@ export default function Footer() {
           <div>
             <h4 className="footer-col-title">Services</h4>
             <ul className="footer-links">
-              <li className="footer-link-item"><a href="#airport">Airport Transfers</a></li>
-              <li className="footer-link-item"><a href="#outstation">Outstation Rides</a></li>
-              <li className="footer-link-item"><a href="#local">Local Rentals</a></li>
-              <li className="footer-link-item"><a href="#corporate">Corporate Travel</a></li>
+              <li className="footer-link-item"><Link to="/services/airport">Airport Transfers</Link></li>
+              <li className="footer-link-item"><Link to="/services/outstation">Outstation Rides</Link></li>
+              <li className="footer-link-item"><Link to="/services/fullday">Local Rentals</Link></li>
+              <li className="footer-link-item"><Link to="/services/corporate">Corporate Travel</Link></li>
             </ul>
           </div>
 
@@ -57,10 +75,10 @@ export default function Footer() {
           <div>
             <h4 className="footer-col-title">Company</h4>
             <ul className="footer-links">
-              <li className="footer-link-item"><a href="#about">About Us</a></li>
-              <li className="footer-link-item"><a href="#careers">Careers</a></li>
-              <li className="footer-link-item"><a href="#press">Press</a></li>
-              <li className="footer-link-item"><a href="#blog">Blog</a></li>
+              <li className="footer-link-item"><Link to="/about">About Us</Link></li>
+              <li className="footer-link-item"><Link to="/about">FAQ</Link></li>
+              <li className="footer-link-item"><Link to="/contact">Contact</Link></li>
+              <li className="footer-link-item"><Link to="/blog">Blog</Link></li>
             </ul>
           </div>
 
@@ -77,6 +95,8 @@ export default function Footer() {
                 type="email"
                 className="newsletter-input"
                 placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
               <button type="submit" className="newsletter-btn" aria-label="Subscribe to newsletter">
@@ -90,8 +110,8 @@ export default function Footer() {
         <div className="footer-bottom">
           <p>© {new Date().getFullYear()} EVB Travels. All rights reserved.</p>
           <div className="footer-bottom-links">
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Terms of Service</a>
+            <Link to="/about">Privacy Policy</Link>
+            <Link to="/about">Terms of Service</Link>
           </div>
         </div>
       </div>

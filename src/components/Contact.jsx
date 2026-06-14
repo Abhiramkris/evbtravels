@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, MessageCircle, Mail, PhoneCall, MapPin, Clock, Send, CheckCircle2, ArrowRight } from 'lucide-react';
+import { submitContactForm } from '../utils/api';
 import './Contact.css';
 
 export default function Contact() {
@@ -11,32 +12,55 @@ export default function Contact() {
   const [emailBody, setEmailBody] = useState('');
   const [emailSubmitted, setEmailSubmitted] = useState(false);
 
-  const handleCallbackSubmit = (e) => {
+  const handleCallbackSubmit = async (e) => {
     e.preventDefault();
     if (!callbackName || !callbackPhone) {
       alert('Please fill out your name and phone number.');
       return;
     }
-    setCallbackSubmitted(true);
-    setTimeout(() => {
-      setCallbackSubmitted(false);
-      setCallbackName('');
-      setCallbackPhone('');
-    }, 4000);
+    
+    const success = await submitContactForm({
+      name: callbackName,
+      phone: callbackPhone,
+      subject: 'Callback Request',
+      message: `User ${callbackName} has requested a phone callback at number ${callbackPhone}.`
+    });
+
+    if (success) {
+      setCallbackSubmitted(true);
+      setTimeout(() => {
+        setCallbackSubmitted(false);
+        setCallbackName('');
+        setCallbackPhone('');
+      }, 4000);
+    } else {
+      alert('Callback request failed. Please try again or call us directly.');
+    }
   };
 
-  const handleEmailSubmit = (e) => {
+  const handleEmailSubmit = async (e) => {
     e.preventDefault();
     if (!emailSubject || !emailBody) {
       alert('Please enter a subject and your message.');
       return;
     }
-    setEmailSubmitted(true);
-    setTimeout(() => {
-      setEmailSubmitted(false);
-      setEmailSubject('');
-      setEmailBody('');
-    }, 4000);
+
+    const success = await submitContactForm({
+      name: 'Email Support Contact Form',
+      subject: emailSubject,
+      message: emailBody
+    });
+
+    if (success) {
+      setEmailSubmitted(true);
+      setTimeout(() => {
+        setEmailSubmitted(false);
+        setEmailSubject('');
+        setEmailBody('');
+      }, 4000);
+    } else {
+      alert('Message submission failed. Please try again or email directly.');
+    }
   };
 
   const tabs = [

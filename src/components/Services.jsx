@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Services.css';
 
 import airportImg from '../assets/airport_transfer.png';
@@ -60,7 +61,7 @@ export default function Services() {
 
         <div className="services-grid">
           {SERVICES_DATA.map((service) => (
-            <div key={service.id} className="service-card animate-fade-in">
+            <Link to={`/services/${service.id}`} key={service.id} className="service-card animate-fade-in">
               <div className="service-img-container">
                 <img 
                   src={service.image} 
@@ -72,8 +73,11 @@ export default function Services() {
               <div className="service-content">
                 <h3 className="service-card-title">{service.title}</h3>
                 <p className="service-card-desc">{service.description}</p>
+                <span className="service-card-link" style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--brand-emerald)', marginTop: '8px', display: 'inline-flex', alignItems: 'center' }}>
+                  Learn More &rarr;
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

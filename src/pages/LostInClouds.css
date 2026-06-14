@@ -1,0 +1,152 @@
+.lost-page-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #cce3fd 0%, #eff6ff 100%);
+  padding: 24px;
+}
+
+/* Sky floating animation elements */
+.sky-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-cloud {
+  position: absolute;
+  color: white;
+  opacity: 0.25;
+}
+
+.cloud-1 {
+  top: 15%;
+  animation: floatCloudLeftToRight 50s linear infinite;
+}
+
+.cloud-2 {
+  top: 45%;
+  animation: floatCloudLeftToRight 75s linear infinite;
+  animation-delay: -25s;
+}
+
+.cloud-3 {
+  top: 70%;
+  animation: floatCloudLeftToRight 60s linear infinite;
+  animation-delay: -10s;
+}
+
+.floating-plane {
+  position: absolute;
+  top: 20%;
+  right: 15%;
+  color: var(--brand-emerald);
+  opacity: 0.6;
+  animation: flyPlaneLoop 6s ease-in-out infinite;
+}
+
+/* Card details styling */
+.lost-card {
+  max-width: 520px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--border-radius-lg);
+  padding: 48px;
+  text-align: center;
+  z-index: 2;
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.08);
+}
+
+.lost-icon-box {
+  width: 68px;
+  height: 68px;
+  background-color: var(--brand-emerald-glow);
+  color: var(--brand-emerald);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.lost-title {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.lost-subtitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.lost-description {
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.btn-lost-home {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--border-radius-sm);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-lost-home:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+/* Animations */
+@keyframes floatCloudLeftToRight {
+  0% {
+    transform: translateX(-200px);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes flyPlaneLoop {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(-3deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .lost-card {
+    padding: 32px 24px;
+  }
+  .lost-title {
+    font-size: 1.85rem;
+  }
+}
