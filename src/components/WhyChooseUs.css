@@ -1,0 +1,91 @@
+.choose-section {
+  padding: 80px 0 100px;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  text-align: left;
+}
+
+.choose-header {
+  margin-bottom: 48px;
+  max-width: 600px;
+}
+
+.choose-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.choose-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.choose-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* Minimalist Card - No Shadow */
+.choose-card {
+  background-color: var(--bg-secondary);
+  border: none;
+  border-radius: var(--border-radius-md);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: none; /* No shadow per request */
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.choose-card:hover {
+  background-color: var(--bg-tertiary);
+  transform: translateY(-2px);
+}
+
+.choose-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--brand-emerald-glow);
+  color: var(--brand-emerald);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.choose-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.choose-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.25px;
+}
+
+.choose-card-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .choose-title {
+    font-size: 2rem;
+  }
+  .choose-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
